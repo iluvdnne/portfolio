@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ara Vasquez Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e6d6ff, #f5f0ff);
+    color: #333;
+    text-align: center;
+}
+
+/* HERO */
+.hero {
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.hero p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* SERVICES */
+.services {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 280px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+/* SAMPLE WORKS */
+.samples {
+    padding: 40px 20px;
+}
+
+.sample-card {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* UPLOAD PREVIEW */
+#preview img {
+    width: 200px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+/* CONTACT */
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.footer a {
+    color: purple;
+    text-decoration: none;
+    display: block;
+    margin-top: 5px;
+}
+
+/* ADMIN BUTTON */
+.admin-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    background: purple;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <h1 contenteditable="true">Ara Vasquez</h1>
+    <p>AI Content Generator, Photo Editor, Video Editor</p>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+
+    <div class="card">
+        <h3>AI Content Generation</h3>
+        <p>I create AI-powered content to help produce fast, engaging, and modern digital media.</p>
+    </div>
+
+    <div class="card">
+        <h3>Photo Editor</h3>
+        <p>I edit photos for thumbnails, ads, and social media with clean, eye-catching results.</p>
+    </div>
+
+    <div class="card">
+        <h3>Video Editor</h3>
+        <p>I turn raw clips into engaging short-form videos for TikTok, Reels, and Shorts.</p>
+    </div>
+
+</section>
+
+<!-- SAMPLE WORKS -->
+<section class="samples">
+    <h2>My Sample Works</h2>
+
+    <div id="preview"></div>
+
+    <div class="sample-card" onclick="window.open('https://drive.google.com/drive/folders/1ATFmGgXXimXdRjmYyTb39nzK-sgAWy5T')">
+        Sample Work (Videos) <br> <b>Click Me</b>
+    </div>
+</section>
+
+<!-- ADMIN -->
+<button class="admin-btn" onclick="adminLogin()">Admin Panel</button>
+<input type="file" id="upload" multiple style="display:none" onchange="showImages(event)">
+
+<!-- FOOTER -->
+<section class="footer">
+    <p>Hire me and let’s work together.</p>
+
+    <a href="mailto:aravasquez0001@gmail.com">📧 Gmail</a>
+    <a href="https://t.me/aravsqzfrlnbot" target="_blank">💬 Telegram</a>
+</section>
+
+<script>
+
+function adminLogin() {
+    let confirmAccess = confirm("Confirm your identity?");
+    if (!confirmAccess) return;
+
+    let password = prompt("Enter password:");
+    if (password === "Paul1126") {
+        alert("Access granted!");
+        document.getElementById("upload").click();
+    } else {
+        alert("Access denied!");
+    }
+}
+
+function showImages(event) {
+    let preview = document.getElementById("preview");
+    preview.innerHTML = "";
+
+    for (let file of event.target.files) {
+        let img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+    }
+}
+
+</script>
+
+</body>
+</html>
