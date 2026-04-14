@@ -230,31 +230,25 @@
 
         // UPLOAD FUNCTION
         async function uploadImages() {
-            const input = document.getElementById("fileInput");
-            if (input.files.length === 0) return alert("Select files first");
+    const input = document.getElementById("fileInput");
+    const file = input.files[0];
 
-            const formData = new FormData();
-            for (let file of input.files) {
-                formData.append("images", file);
-            }
+    const res = await fetch('/api/upload', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Paul1126', // Matches the API check
+        },
+        body: file,
+    });
 
-            try {
-                const res = await fetch("/upload", {
-                    method: "POST",
-                    body: formData
-                });
-
-                if (res.ok) {
-                    alert("Uploaded successfully!");
-                    loadImages(true);
-                } else {
-                    alert("Upload failed. (Backend required)");
-                }
-            } catch (err) {
-                console.error("No server found to handle upload.");
-                alert("Frontend only: You need a backend (Node.js/Express) to handle actual file uploads.");
-            }
-        }
+    if (res.ok) {
+        const newBlob = await res.json();
+        alert("Uploaded to Vercel Blob!");
+        location.reload(); // Refresh to see the new image
+    } else {
+        alert("Upload failed.");
+    }
+}
 
         // LOAD IMAGES
         async function loadImages(isAdmin = false) {
