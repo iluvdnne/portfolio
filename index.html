@@ -1,281 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ara Vasquez Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ara Vasquez | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+        body {
+            background: linear-gradient(135deg, #e6d6ff, #f5f0ff);
+            color: #333;
+            text-align: center;
+            min-height: 100vh;
+        }
 
-body {
-    background: linear-gradient(135deg, #e6d6ff, #f5f0ff);
-    text-align: center;
-    color: #333;
-}
+        /* HERO */
+        .hero {
+            padding: 70px 20px;
+        }
 
-/* HERO */
-.hero {
-    padding: 70px 20px;
-}
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #4b0082;
+        }
 
-.hero h1 {
-    font-size: 2.5rem;
-}
+        .hero p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #555;
+        }
 
-.hero p {
-    margin-top: 10px;
-}
+        /* SERVICES */
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+            flex-wrap: wrap;
+        }
 
-/* SERVICES */
-.services {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 30px;
-}
+        .card {
+            background: white;
+            width: 260px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
 
-.card {
-    background: white;
-    width: 260px;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
 
-.card:hover {
-    transform: translateY(-5px);
-}
+        .card h3 {
+            margin-bottom: 10px;
+            color: #6a0dad;
+        }
 
-/* SAMPLES */
-.samples {
-    padding: 30px;
-}
+        /* SAMPLE WORKS */
+        .samples {
+            padding: 40px 20px;
+        }
 
-#gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
+        #gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
 
-.image-box {
-    position: relative;
-}
+        .image-box {
+            position: relative;
+        }
 
-.image-box img {
-    width: 200px;
-    border-radius: 10px;
-}
+        .image-box img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
 
-/* DELETE BUTTON */
-.delete-btn {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: red;
-    color: white;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-}
+        /* DELETE BUTTON */
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
 
-/* SAMPLE VIDEO CARD */
-.sample-card {
-    margin-top: 20px;
-    padding: 15px;
-    background: white;
-    display: inline-block;
-    border-radius: 10px;
-    cursor: pointer;
-}
+        .sample-card {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            display: inline-block;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
 
-/* ADMIN */
-#uploadSection {
-    display: none;
-    margin-top: 20px;
-}
+        .sample-card:hover {
+            background: #f0f0f0;
+        }
 
-/* FOOTER */
-.footer {
-    margin-top: 40px;
-    padding: 20px;
-}
+        /* ADMIN SECTION */
+        #adminSection, #uploadSection {
+            margin-top: 20px;
+            padding: 20px;
+        }
 
-.footer a {
-    display: block;
-    color: purple;
-    text-decoration: none;
-}
-</style>
+        #uploadSection {
+            display: none; /* Hidden until login */
+            background: #fff;
+            max-width: 400px;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
 
+        .admin-btn {
+            padding: 10px 20px;
+            border: none;
+            background: #6a0dad;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 40px;
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .footer a {
+            color: #6a0dad;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 15px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-    <h1 contenteditable="true">Ara Vasquez</h1>
-    <p>AI Content Generator, Photo Editor, Video Editor</p>
-</section>
+    <section class="hero">
+        <h1 contenteditable="true">Ara Vasquez</h1>
+        <p>AI Content Creator | Photo & Video Editor</p>
+    </section>
 
-<!-- SERVICES -->
-<section class="services">
-    <div class="card">
-        <h3>AI Content Generation</h3>
-        <p>I create AI-powered content to help produce fast, engaging media.</p>
+    <section class="services">
+        <div class="card">
+            <h3>AI Content Generation</h3>
+            <p>I create AI-powered content to help produce fast, engaging media.</p>
+        </div>
+
+        <div class="card">
+            <h3>Photo Editor</h3>
+            <p>I edit thumbnails, ads, and social media visuals.</p>
+        </div>
+
+        <div class="card">
+            <h3>Video Editor</h3>
+            <p>I create short-form videos for TikTok, Reels, and Shorts.</p>
+        </div>
+    </section>
+
+    <section class="samples">
+        <h2>My Sample Works</h2>
+        <div id="gallery">
+            </div>
+
+        <div class="sample-card" onclick="window.open('https://drive.google.com/drive/folders/1ATFmGgXXimXdRjmYyTb39nzK-sgAWy5T')">
+            Sample Work (Videos) <br><b>Click Me</b>
+        </div>
+    </section>
+
+    <div id="adminSection">
+        <button class="admin-btn" onclick="login()">Admin Login</button>
     </div>
 
-    <div class="card">
-        <h3>Photo Editor</h3>
-        <p>I edit thumbnails, ads, and social media visuals.</p>
+    <div id="uploadSection">
+        <h3>Admin Panel: Upload Images</h3>
+        <input type="file" id="fileInput" multiple style="margin: 10px 0;">
+        <br>
+        <button class="admin-btn" onclick="uploadImages()">Upload Now</button>
     </div>
 
-    <div class="card">
-        <h3>Video Editor</h3>
-        <p>I create short-form videos for TikTok, Reels, Shorts.</p>
-    </div>
-</section>
+    <section class="footer">
+        <p>Hire me and let’s work together.</p>
+        <a href="mailto:aravasquez0001@gmail.com">📧 Gmail</a>
+        <a href="https://t.me/aravsqzfrlnbot" target="_blank">💬 Telegram</a>
+    </section>
 
-<!-- SAMPLE WORKS -->
-<section class="samples">
-    <h2>My Sample Works</h2>
+    <script>
+        let isAdminLoggedIn = false;
 
-    <!-- IMAGE GALLERY -->
-    <div id="gallery"></div>
-
-    <!-- VIDEO LINK -->
-    <div class="sample-card" onclick="window.open('https://drive.google.com/drive/folders/1ATFmGgXXimXdRjmYyTb39nzK-sgAWy5T')">
-        Sample Work (Videos) <br><b>Click Me</b>
-    </div>
-</section>
-
-<!-- ADMIN LOGIN -->
-<div id="adminSection">
-    <button onclick="login()">Admin Login</button>
-</div>
-
-<!-- UPLOAD PANEL -->
-<div id="uploadSection">
-    <h3>Upload Images</h3>
-    <input type="file" id="fileInput" multiple>
-    <button onclick="uploadImages()">Upload</button>
-</div>
-
-<!-- FOOTER -->
-<section class="footer">
-    <p>Hire me and let’s work together.</p>
-    <a href="mailto:aravasquez0001@gmail.com">📧 Gmail</a>
-    <a href="https://t.me/aravsqzfrlnbot" target="_blank">💬 Telegram</a>
-</section>
-
-<script>
-
-// LOGIN
-async function login() {
-    const password = prompt("Enter password:");
-
-    const res = await fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password })
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-        alert("Access granted!");
-        document.getElementById("uploadSection").style.display = "block";
-        document.getElementById("adminSection").style.display = "none";
-        loadImages(true);
-    } else {
-        alert("Wrong password!");
-    }
-}
-
-// UPLOAD
-async function uploadImages() {
-    const input = document.getElementById("fileInput");
-    const formData = new FormData();
-
-    for (let file of input.files) {
-        formData.append("images", file);
-    }
-
-    const res = await fetch("/upload", {
-        method: "POST",
-        body: formData
-    });
-
-    if (res.ok) {
-        alert("Uploaded!");
-        loadImages(true);
-    } else {
-        alert("Upload failed");
-    }
-}
-
-// LOAD IMAGES
-async function loadImages(isAdmin = false) {
-    const res = await fetch("/uploads");
-    const images = await res.json();
-
-    const gallery = document.getElementById("gallery");
-    gallery.innerHTML = "";
-
-    images.forEach(img => {
-        const box = document.createElement("div");
-        box.className = "image-box";
-
-        const image = document.createElement("img");
-        image.src = img;
-
-        box.appendChild(image);
-
-        // SHOW DELETE BUTTON IF ADMIN
-        if (isAdmin) {
-            const btn = document.createElement("button");
-            btn.innerText = "X";
-            btn.className = "delete-btn";
-
-            btn.onclick = () => deleteImage(img);
-
-            box.appendChild(btn);
+        // LOGIN FUNCTION
+        async function login() {
+            const password = prompt("Enter password:");
+            
+            // Note: In a real app, you'd fetch("/login") 
+            // For this snippet, I'm using your hardcoded logic:
+            if (password === "Paul1126") {
+                alert("Access granted!");
+                isAdminLoggedIn = true;
+                document.getElementById("uploadSection").style.display = "block";
+                document.getElementById("adminSection").style.display = "none";
+                loadImages(true);
+            } else {
+                alert("Wrong password!");
+            }
         }
 
-        gallery.appendChild(box);
-    });
-}
+        // UPLOAD FUNCTION
+        async function uploadImages() {
+            const input = document.getElementById("fileInput");
+            if (input.files.length === 0) return alert("Select files first");
 
-// DELETE IMAGE
-async function deleteImage(filename) {
-    if (!confirm("Delete this image?")) return;
+            const formData = new FormData();
+            for (let file of input.files) {
+                formData.append("images", file);
+            }
 
-    const res = await fetch("/delete", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filename })
-    });
+            try {
+                const res = await fetch("/upload", {
+                    method: "POST",
+                    body: formData
+                });
 
-    if (res.ok) {
-        loadImages(true);
-    } else {
-        alert("Delete failed");
-    }
-}
+                if (res.ok) {
+                    alert("Uploaded successfully!");
+                    loadImages(true);
+                } else {
+                    alert("Upload failed. (Backend required)");
+                }
+            } catch (err) {
+                console.error("No server found to handle upload.");
+                alert("Frontend only: You need a backend (Node.js/Express) to handle actual file uploads.");
+            }
+        }
 
-// LOAD IMAGES ON START (PUBLIC VIEW)
-loadImages();
+        // LOAD IMAGES
+        async function loadImages(isAdmin = false) {
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = "Loading...";
 
-</script>
+            try {
+                const res = await fetch("/uploads");
+                const images = await res.json();
+                gallery.innerHTML = "";
 
+                images.forEach(imgSrc => {
+                    const box = document.createElement("div");
+                    box.className = "image-box";
+
+                    const image = document.createElement("img");
+                    image.src = imgSrc;
+
+                    box.appendChild(image);
+
+                    if (isAdmin) {
+                        const btn = document.createElement("button");
+                        btn.innerText = "X";
+                        btn.className = "delete-btn";
+                        btn.onclick = () => deleteImage(imgSrc);
+                        box.appendChild(btn);
+                    }
+                    gallery.appendChild(box);
+                });
+            } catch (err) {
+                gallery.innerHTML = "<p>No images found or backend disconnected.</p>";
+            }
+        }
+
+        // DELETE IMAGE
+        async function deleteImage(filename) {
+            if (!confirm("Delete this image?")) return;
+
+            const res = await fetch("/delete", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ filename })
+            });
+
+            if (res.ok) {
+                loadImages(true);
+            } else {
+                alert("Delete failed");
+            }
+        }
+
+        // INITIAL LOAD
+        loadImages();
+    </script>
 </body>
 </html>
